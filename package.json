@@ -1,0 +1,24 @@
+{
+  "name": "abhik-projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startDev": "nodemon index.js"
+  },
+  "author": "Abhik Ghosh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "marked": "^2.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.15",
+    "slugify": "^1.4.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

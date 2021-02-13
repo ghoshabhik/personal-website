@@ -1,0 +1,14 @@
+<div class="form-group">
+    <label for="title">Title</label>
+    <input required value="<%= project.title %>" type="text" name="title" id="title" class="form-control mb-2"> 
+    <label for="projectType">Project Type</label>
+    <input required value="<%= project.projectType %>" type="text" name="projectType" id="projectType" class="form-control mb-2"> 
+    
+    
+    <label for="description">Short Description</label>
+    <textarea  rows="4" style="height:100%;" required name="description" id="description" class="form-control mb-2"><%= project.description %></textarea>
+    <label for="markdown">Markdown</label>
+    <textarea rows="8" style="height:100%;" required name="markdown" id="markdown" class="form-control mb-2"><%= project.markdown %></textarea>
+</div>
+<a href="/projects" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-success">Save</button>
