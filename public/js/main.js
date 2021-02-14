@@ -1,6 +1,23 @@
 $(document).ready(function(){
     $(".target-class").html("Showing All Projects");
+    //console.log($("#flag").val())
+    if($("#flag").val()=='on'){
+        $("#htmlOnly").attr("checked","")
+    }
+    
 })
+var htmlFlagToggle = document.querySelector("#htmlOnly")
+if(htmlFlagToggle){
+    htmlFlagToggle.addEventListener('click', (e) =>{
+        var flagElement = document.querySelector("#flag")
+        //console.log(flagElement)
+        if(flagElement.value == 'off') flagElement.value = 'on'
+        else flagElement.value = 'off'
+        //console.log('input text: ',flagElement.value)
+    })
+}
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
     var target = window.location.pathname.split('/')[1]
     //console.log(target)

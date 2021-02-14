@@ -13,7 +13,7 @@ const articleSchema = new mongoose.Schema({
     },
     markdown: {
         type: String,
-        required: true,
+        required: false,
     },
     createdAt: {
         type: Date,
@@ -27,15 +27,20 @@ const articleSchema = new mongoose.Schema({
     showHtml: {
         type: String,
         required: true
+    },
+    htmlOnly: {
+        type: String,
+        required: false
     }
 })
 
 articleSchema.pre('validate', function(next) {
     if(this.title) {
         this.slug = slugify(this.title, {lower: true, strict: true})
-        console.log(this.slug)
+        //console.log(this.slug)
     }
-    if(this.markdown){
+    //console.log('htmlOnly passed value: ',this.htmlOnly)
+    if(this.markdown && this.htmlOnly == 'off'){
         this.showHtml = marked(this.markdown)
     }
     next()

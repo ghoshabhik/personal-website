@@ -25,7 +25,11 @@ router.get('/edit/:id', async (req, res) => {
     if(process.env.RUNNING_MODE == 'PRD'){
         res.send('Not Authorized for this page')
     }
-    const article = await Article.findById(req.params.id)
+    var article = await Article.findById(req.params.id)
+    console.log('onlyHtml from DB: ',article.htmlOnly)
+    if(article.htmlOnly == "off"){
+        article.htmlOnly == null
+    }
     res.render("articles/edit-article", {article: article})
 })
 
@@ -41,8 +45,15 @@ router.post('/', async (req, res) => {
     let article = new Article({
         title: req.body.title,
         description: req.body.description,
-        markdown: req.body.markdown 
+        markdown: req.body.markdown,
+        showHtml: req.body.showHtml,
+        htmlOnly: req.body.htmlOnly
     })
+    //console.log('htmlOnly form: ',req.body.htmlOnly)
+    if(!req.body.htmlOnly){
+        article.htmlOnly = "off"
+    }
+    //console.log('htmlOnly to be saved: ',article.htmlOnly)
     try{
         article = await article.save()
         res.redirect(`/articles/${article.slug}`)
@@ -57,7 +68,15 @@ router.put('/:id', async (req, res) => {
     //console.log(article)
     article.title = req.body.title
     article.description = req.body.description
-    article.markdown = req.body.markdown 
+    article.markdown = req.body.markdown
+    article.showHtml = req.body.showHtml
+    //console.log('htmlOnly form: ',req.body.htmlOnly)
+    if(!req.body.htmlOnly){
+        article.htmlOnly = "off"
+    }else {
+        article.htmlOnly = req.body.htmlOnly
+    }
+    //console.log('htmlOnly: ',article.htmlOnly)
     try{
         article = await article.save()
         res.redirect(`/articles/${article.slug}`)

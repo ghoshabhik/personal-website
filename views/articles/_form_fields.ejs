@@ -2,9 +2,16 @@
     <label for="title">Title</label>
     <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control mb-2"> 
     <label for="description">Short Description</label>
-    <textarea required name="description" id="description" class="form-control mb-2" rows="5" style="height:100%;"><%= article.description %></textarea>
+    <textarea required name="description" id="description" class="form-control mb-2" rows="3" style="height:100%;"><%= article.description %></textarea>
     <label for="markdown">Markdown</label>
-    <textarea required name="markdown" id="markdown" class="form-control mb-2" rows="10" style="height:100%;"><%= article.markdown %></textarea>
+    <textarea name="markdown" id="markdown" class="form-control mb-2" rows="6" style="height:100%;"><%= article.markdown %></textarea>
+    <div class="custom-control custom-switch mb-2 mt-2">
+        <input type="checkbox" class="custom-control-input" id="htmlOnly" name="htmlOnly" >
+        <label class="custom-control-label" for="htmlOnly">Do not Convert Markdown to HTML</label>
+        <input type="hidden" id="flag" name="flag" value="<%= article.htmlOnly %>">
+      </div>
+    <label for="showHtml">Raw HTML</label>
+    <textarea required name="showHtml" id="showHtml" class="form-control mb-2" rows="6" style="height:100%;"><%= article.showHtml %></textarea>
 </div>
 <a href="/articles" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-success">Save</button>
