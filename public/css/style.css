@@ -12,3 +12,7 @@
 /* .container{
     max-width: 70vw;
 } */
+
+img {
+    width:auto !important;
+  }
