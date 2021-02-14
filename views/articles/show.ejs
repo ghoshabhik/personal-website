@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="/public/css/github.css">
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
-    <script>
-      function resizeIframe(obj) {
-        console.log(obj.contentWindow.document.documentElement.scrollHeight)
-        obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-      }
-    </script>
 </head>
 <body>
     <div class="container">
@@ -39,19 +33,23 @@
                 <div class="blog-display">
                     
                     <div class="row">
-                      <%- article.showHtml %>
                         <!--div class="col">
                           
                         </div-->
-                        <!--div class="col-12">
+                        <div class="col-12">
                             <div class="card border-light mb-3 " >
                                 <div class="card-body mx-lg-5">
                                     <p class="text-center">Created on: <%= article.createdAt.toLocaleDateString() %> </p>
                                     <hr>
-                                  <p class="card-text text-center"><%- article.showHtml %></p>
+                                    <div class="px-lg-5 mx-lg-5">
+                                      <div class="px-lg-5 mx-lg-1">
+                                      <p class="card-text text-center"><%- article.showHtml %></p>
+                                      </div> 
+                                    </div>
+                                  
                                 </div>
                               </div>    
-                        </div-->
+                        </div>
                         <!--div class="col">
                           
                         </div-->
