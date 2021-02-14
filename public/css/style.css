@@ -8,11 +8,7 @@
 .dot{
     font-size: 25px;
     font-weight: 900;
+    scale: inherit;
 }
-/* .container{
-    max-width: 70vw;
-} */
 
-img {
-    width:auto !important;
-  }
+

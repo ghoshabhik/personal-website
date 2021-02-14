@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="Access-Control-Allow-Origin" CONTENT="https://docs.google.com">
     <!-- Bootstrap CSS  -->
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="/public/css/github.css">
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
+    <script>
+      function resizeIframe(obj) {
+        console.log(obj.contentWindow.document.documentElement.scrollHeight)
+        obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+      }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -32,10 +39,11 @@
                 <div class="blog-display">
                     
                     <div class="row">
+                      <%- article.showHtml %>
                         <!--div class="col">
                           
                         </div-->
-                        <div class="col-12">
+                        <!--div class="col-12">
                             <div class="card border-light mb-3 " >
                                 <div class="card-body mx-lg-5">
                                     <p class="text-center">Created on: <%= article.createdAt.toLocaleDateString() %> </p>
@@ -43,7 +51,7 @@
                                   <p class="card-text text-center"><%- article.showHtml %></p>
                                 </div>
                               </div>    
-                        </div>
+                        </div-->
                         <!--div class="col">
                           
                         </div-->
@@ -74,5 +82,6 @@
     <script src="/public/js/main.js"></script>
     <script src="/public/js/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    
 </body>
 </html>

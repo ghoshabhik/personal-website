@@ -6,6 +6,9 @@ $(document).ready(function(){
     }
     
 })
+
+
+
 var htmlFlagToggle = document.querySelector("#htmlOnly")
 if(htmlFlagToggle){
     htmlFlagToggle.addEventListener('click', (e) =>{
