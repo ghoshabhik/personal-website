@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema({
     },
     markdown: {
         type: String,
-        required: true,
+        required: false
     },
     createdAt: {
         type: Date,
@@ -31,6 +31,10 @@ const projectSchema = new mongoose.Schema({
     showHtml: {
         type: String,
         required: true
+    },
+    htmlOnly: {
+        type: String,
+        required: false
     }
 })
 
@@ -39,7 +43,7 @@ projectSchema.pre('validate', function(next) {
         this.slug = slugify(this.title, {lower: true, strict: true})
         console.log(this.slug)
     }
-    if(this.markdown){
+    if(this.markdown && this.htmlOnly == 'off'){
         this.showHtml = marked(this.markdown)
     }
     next()

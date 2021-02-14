@@ -26,6 +26,9 @@ router.get('/edit/:id', async (req, res) => {
         res.send('Not Authorized for this page')
     }
     const project = await Project.findById(req.params.id)
+    if(project.htmlOnly == "off"){
+        project.htmlOnly == null
+    }
     res.render("projects/edit-project", {project: project})
 })
 
@@ -42,8 +45,13 @@ router.post('/', async (req, res) => {
         title: req.body.title,
         projectType: req.body.projectType,
         description: req.body.description,
-        markdown: req.body.markdown 
+        markdown: req.body.markdown,
+        showHtml: req.body.showHtml,
+        htmlOnly: req.body.htmlOnly 
     })
+    if(!req.body.htmlOnly){
+        project.htmlOnly = "off"
+    }
     //console.log(project)
     try{
         project = await project.save()
@@ -61,6 +69,12 @@ router.put('/:id', async (req, res) => {
     project.projectType = req.body.projectType
     project.description = req.body.description
     project.markdown = req.body.markdown 
+    project.showHtml = req.body.showHtml
+    if(!req.body.htmlOnly){
+        project.htmlOnly = "off"
+    }else {
+        project.htmlOnly = req.body.htmlOnly
+    }
     try{
         project = await project.save()
         res.redirect(`/projects/${project.slug}`)

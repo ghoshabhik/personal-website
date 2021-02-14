@@ -26,7 +26,7 @@ router.get('/edit/:id', async (req, res) => {
         res.send('Not Authorized for this page')
     }
     var article = await Article.findById(req.params.id)
-    console.log('onlyHtml from DB: ',article.htmlOnly)
+    //console.log('onlyHtml from DB: ',article.htmlOnly)
     if(article.htmlOnly == "off"){
         article.htmlOnly == null
     }
