@@ -12,6 +12,11 @@
     </div>
     <label for="showHtml">Raw HTML</label>
     <textarea required name="showHtml" id="showHtml" class="form-control mb-2" rows="6" style="height:100%;"><%= article.showHtml %></textarea>
+    <label for="back">Back</label>
+    <input required value="<%= article.prev %>" type="text" name="back" id="back" class="form-control mb-2"> 
+    <label for="next">Next</label>
+    <input required value="<%= article.next %>" type="text" name="next" id="next" class="form-control mb-2"> 
+
 </div>
 <a href="/articles" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-success">Save</button>

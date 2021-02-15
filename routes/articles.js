@@ -46,6 +46,8 @@ router.post('/', async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown,
+        prev: req.body.back,
+        next: req.body.next,
         showHtml: req.body.showHtml,
         htmlOnly: req.body.htmlOnly
     })
@@ -69,6 +71,8 @@ router.put('/:id', async (req, res) => {
     article.title = req.body.title
     article.description = req.body.description
     article.markdown = req.body.markdown
+    article.prev = req.body.back,
+    article.next = req.body.next,
     article.showHtml = req.body.showHtml
     //console.log('htmlOnly form: ',req.body.htmlOnly)
     if(!req.body.htmlOnly){

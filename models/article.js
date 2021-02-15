@@ -31,6 +31,14 @@ const articleSchema = new mongoose.Schema({
     htmlOnly: {
         type: String,
         required: false
+    },
+    prev: {
+        type: String,
+        required: true
+    },
+    next: {
+        type: String,
+        required: true
     }
 })
 
