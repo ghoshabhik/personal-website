@@ -39,7 +39,23 @@ const articleSchema = new mongoose.Schema({
     next: {
         type: String,
         required: true
-    }
+    },
+    postComments: [
+        {
+            commenterName: {
+                type: String,
+                required: true
+            },
+            commentBody: {
+                type: String,
+                required: true
+            },
+            commentCreatedAt: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ]
 })
 
 articleSchema.pre('validate', function(next) {

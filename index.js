@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended:false }))
 app.use(methodOverride('_method'))
 app.use('/public', express.static('public'));
 
- app.use('/articles', articlesRouter)
+app.use('/articles', articlesRouter)
 app.use('/projects', projectsRouter)
 app.use('/contact', commentsRouter)
 
