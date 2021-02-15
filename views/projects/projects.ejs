@@ -78,10 +78,14 @@
                                 <div class="card m-2">
 
                                     <div class="card-body mx-lg-5">
-                                      <h5 class="card-title m-2"><%=  project.title %></h5>
-                                      <div class="text-muted m-2"><%=  project.projectType %></div>
-                                      <p class="card-text m-2"><%=  project.description %></p>
-                                      <a href="/projects/<%=  project.slug %>" class="btn btn-secondary">Read More</a>
+                                      <div class="row">
+                                        <div class="col-lg-9"><h5 class="card-title my-2"><%=  project.title %></h5></div>
+                                        <div class="col-lg-3"><div class="text-muted my-2"><%=  project.projectType %></div></div>
+                                      </div>
+                                      
+                                      
+                                      <p class="card-text mb-2"><%=  project.description %></p>
+                                      <a href="/projects/<%=  project.slug %>" class="btn btn-secondary btn-sm">Read More</a>
                                     </div>
                                 </div>
                             <% }) %>

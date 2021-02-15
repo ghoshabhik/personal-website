@@ -42,10 +42,14 @@
                                 <div class="card mt-3">
                                     
                                     <div class="card-body mx-lg-5">
-                                      <h5 class="card-title m-2"><%=  article.title %></h5>
-                                      <div class="text-muted m-2"><%=  article.createdAt.toLocaleDateString() %></div>
-                                      <p class="card-text m-2"><%=  article.description %></p>
-                                      <a href="/articles/<%=  article.slug %>" class="btn btn-secondary">Read More</a>
+                                        <div class="row">
+                                            <div class="col-lg-9"><h5 class="card-title mb-2"><%=  article.title %></h5></div>
+                                            <div class="col-lg-3"><div class="text-muted mb-2"><%=  article.createdAt.toLocaleDateString() %></div></div>
+                                          </div>
+                                      
+                                      
+                                      <p class="card-text mb-2"><%=  article.description %></p>
+                                      <a href="/articles/<%=  article.slug %>" class="btn btn-secondary btn-sm">Read More</a>
                                     </div>
                                 </div>
                             <% }) %>
