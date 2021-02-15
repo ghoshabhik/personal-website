@@ -13,6 +13,27 @@ const uri = `mongodb+srv://${mongodb_username}:${mongodb_password}@abhikatlasmum
 
 mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true})
 
+
+router.put('/:slug/postcomment', async (req, res) => {
+    
+    let article = await Article.findOne({slug: req.params.slug})
+    //console.log("This is Comment Put: ",article)
+    let postComment = {
+        commenterName: req.body.post_name,
+        commentBody: req.body.post_comment
+    }
+    article.postComments.push(postComment)
+    //console.log(article)
+    try{
+        article = await article.save()
+        res.redirect(`/articles/${article.slug}`)
+    } catch(err){
+        console.log(err)
+        res.redirect(`/articles/${article.slug}`)
+    }
+})
+
+
 router.get('/new', (req, res) => {
     if(process.env.RUNNING_MODE == 'PRD'){
         res.send('Not Authorized for this page')
@@ -38,6 +59,7 @@ router.get('/:slug', async (req, res) => {
     if(article == null ){
         res.redirect('/')
     }
+    console.log(article)
     res.render('articles/show', {article: article, mode: process.env.RUNNING_MODE})
 })
 
@@ -67,7 +89,7 @@ router.post('/', async (req, res) => {
 })
 router.put('/:id', async (req, res) => {
     let article = await Article.findById(req.params.id)
-    //console.log(article)
+    console.log("This is edit: ",article)
     article.title = req.body.title
     article.description = req.body.description
     article.markdown = req.body.markdown
@@ -90,6 +112,7 @@ router.put('/:id', async (req, res) => {
     }
     
 })
+
 
 router.get('/', async (req, res) => {
     const articles = await Article.find().sort({createdAt: 'desc'})

@@ -1,0 +1,11 @@
+<% article.postComments.forEach(comment => { %>
+    <div class="card mt-3 mx-5">                    
+      <div class="card-body mx-lg-5">
+          <div class="row">
+              <div class="col-lg-6"><h4 class="mb-2 text-muted"><%=  comment.commenterName %></h4></div>
+              <div class="col-lg-6"><div class="mb-2"><small><%=  comment.commentCreatedAt %></small></div></div>
+          </div>
+          <div class="col-lg-3"><div class="text-info mb-2"><%=  comment.commentBody %></div></div>
+      </div>
+    </div>
+  <% }) %>

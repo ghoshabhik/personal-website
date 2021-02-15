@@ -76,11 +76,27 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                             <a href="/articles/edit/<%= article.id%>" class="btn btn-primary ml-1">Edit</a>
-                            <% } %>
+                            
+                               
+                        <% } %>
+                        
                     </div>
-                    
+                    <hr>
+                    <% if(mode == 'DEV') { %>
+                    <%- include('_post_comments') %>
+                    <% } %>
                 </div>
-            </section>       
+            </section> 
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                <hr>
+                <form method="POST" action="/articles/<%= article.slug %>/postcomment?_method=PUT">
+                  <%- include('_form_fields_post_comment') %>
+                </form>  
+              </div>
+            </div>
+            
+            
             <footer>
                 <div class="card-footer text-muted mt-3">
                   <%- include('./../home/_footer') %>
