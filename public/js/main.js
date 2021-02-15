@@ -49,22 +49,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var selected = $(this).text()
     //console.log("Selected>>>>",selected )
     if(selected != "All Projects"){
-        var elements = $(".card").find(".card-body").find("div.text-muted")
+        var elements = $(".card").find(".card-body").find("div.row").find("div.proj-type").find("div.text-muted")
         //console.log(elements)
         elements.each(function(){
-            $(this).parent().parent().show()
+            $(this).parent().parent().parent().parent().show()
             //console.log("InnerText======",$(this).text())
             //console.log("Selected::::",selected )
             if($(this).text() != selected){
                 //console.log($(this).parent().parent())
-                $(this).parent().parent().hide()
+                $(this).parent().parent().parent().parent().hide()
             }
         })
     }
     else {
-        var elements = $(".card").find(".card-body").find("div.text-muted")
+        var elements = $(".card").find(".card-body").find("div.row").find("div.proj-type").find("div.text-muted")
         elements.each(function(){
-                $(this).parent().parent().show()
+                $(this).parent().parent().parent().parent().show()
             }
         )
     }
