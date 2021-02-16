@@ -59,7 +59,7 @@ router.get('/:slug', async (req, res) => {
     if(article == null ){
         res.redirect('/')
     }
-    console.log(article)
+    //console.log(article)
     res.render('articles/show', {article: article, mode: process.env.RUNNING_MODE})
 })
 
