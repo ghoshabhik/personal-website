@@ -37,7 +37,8 @@
                                 <a href="/projects/new" class="btn btn-secondary">Create a new Project</a>
                             </div>
                           <% } %>
-                            <ul class="nav nav-pills nav-fill">
+                          <div class="d-flex justify-content-center mb-3">
+                            <ul class="nav nav-pills ">
                                 <li class="nav-item">
                                   <a class="nav-link active" aria-current="page" href="#">All Projects</a>
                                 </li>
@@ -52,6 +53,7 @@
                                 </li>
                                 
                               </ul>
+                            </div>
                         </div>
                         <div class="col">
                           
@@ -95,6 +97,11 @@
                         <!--div class="col">
                           
                         </div-->
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8 d-flex justify-content-center">
+                          <%- include('_pagenation') %>
+                      </div>
                     </div>
                 </div>
             </section>       

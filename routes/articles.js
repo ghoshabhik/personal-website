@@ -42,6 +42,42 @@ router.get('/new', (req, res) => {
     res.render('articles/new-article', {article: new Article()})
 })
 
+router.get('/pagenated', async (req, res) => {
+    let page = req.query.page || 1
+    let limit = 3
+    let pagenatedStruct = []
+    let docCount = await Article.countDocuments()
+    let countOfPageButton = Math.round(docCount/limit)
+    console.log(docCount)
+
+    pagenatedStruct.push({
+        class: 'inactive',
+        href: '/articles/pagenated?page=1',
+        name: '<<'
+    })
+    Array(countOfPageButton).fill().map((_, i) => i ).forEach( i => {
+        pagenatedStruct.push({
+            href: `/articles/pagenated?page=${(i+1)}`,
+            class: 'inactive',
+            name: `${(i+1)}`
+        })
+    })
+    pagenatedStruct.push({
+        class: 'inactive',
+        href: `/articles/pagenated?page=${countOfPageButton}`,
+        name: '>>'
+    })
+
+    pagenatedStruct.map( currentPage => {
+        if(page == currentPage.name) 
+        currentPage.class = 'active'
+    })
+    //console.log(pagenatedStruct)
+
+    const articles = await Article.find().sort({createdAt: 'desc'}).limit(limit).skip((page-1)*limit)
+    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: pagenatedStruct})
+})
+
 router.get('/edit/:id', async (req, res) => {
     if(process.env.RUNNING_MODE == 'PRD'){
         res.send('Not Authorized for this page')
@@ -116,7 +152,7 @@ router.put('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const articles = await Article.find().sort({createdAt: 'desc'})
-    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE})
+    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: {}})
 })
 
 router.delete('/:id', async (req, res) => {
