@@ -152,7 +152,7 @@ router.put('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const articles = await Article.find().sort({createdAt: 'desc'})
-    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: {}})
+    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: []})
 })
 
 router.delete('/:id', async (req, res) => {
