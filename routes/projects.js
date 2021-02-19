@@ -124,8 +124,12 @@ router.put('/:id', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-    const projects = await Project.find().sort({createdAt: 'desc'})
-    res.render('projects/projects', {projects: projects, mode: process.env.RUNNING_MODE, pagenatedStruct: [] })
+    //const projects = await Project.find().sort({createdAt: 'desc'})
+    const projects = await Project.find()
+    .sort({projectType: 'desc'})
+    .select({'title':1, 'slug': 1, 'projectType':1, 'description':1})
+    console.log(projects)
+    res.render('projects/project-topics', {projects: projects, mode: process.env.RUNNING_MODE, pagenatedStruct: [] })
 })
 
 
