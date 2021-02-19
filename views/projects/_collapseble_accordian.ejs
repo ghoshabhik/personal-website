@@ -13,9 +13,11 @@
         <div class="card-body">
           <div class="list-group">
             <% projects.forEach(project => { %>
+              <% if(project.projectType.toLowerCase().indexOf('data') !== -1) { %> 
                 <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
                  - <span class="text-secondary"><%= project.description %></span>
                 </a>
+                <% } %>
             <% }) %>
           </div>
         </div>
@@ -31,7 +33,15 @@
       </div>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
-          Some placeholder content for the second accordion panel. This panel is hidden by default.
+          <div class="list-group">
+            <% projects.forEach(project => { %>
+              <% if(project.projectType.toLowerCase().indexOf('cloud') !== -1) { %> 
+                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                 - <span class="text-secondary"><%= project.description %></span>
+                </a>
+                <% } %>
+            <% }) %>
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +55,15 @@
       </div>
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <div class="card-body">
-          And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+          <div class="list-group">
+            <% projects.forEach(project => { %>
+              <% if(project.projectType.toLowerCase().indexOf('system') !== -1) { %> 
+                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                 - <span class="text-secondary"><%= project.description %></span>
+                </a>
+                <% } %>
+            <% }) %>
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +77,15 @@
         </div>
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
           <div class="card-body">
-            And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+            <div class="list-group">
+              <% projects.forEach(project => { %>
+                <% if(project.projectType.toLowerCase().indexOf('devops') !== -1) { %> 
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                   - <span class="text-secondary"><%= project.description %></span>
+                  </a>
+                  <% } %>
+              <% }) %>
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +100,15 @@
         </div>
         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
           <div class="card-body">
-            And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+            <div class="list-group">
+              <% projects.forEach(project => { %>
+                <% if(project.projectType.toLowerCase().indexOf('microservice') !== -1) { %> 
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                   - <span class="text-secondary"><%= project.description %></span>
+                  </a>
+                  <% } %>
+              <% }) %>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +122,15 @@
         </div>
         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
           <div class="card-body">
-            And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+            <div class="list-group">
+              <% projects.forEach(project => { %>
+                <% if(project.projectType.toLowerCase().indexOf('integration') !== -1) { %> 
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                   - <span class="text-secondary"><%= project.description %></span>
+                  </a>
+                  <% } %>
+              <% }) %>
+            </div>
           </div>
         </div>
       </div>
