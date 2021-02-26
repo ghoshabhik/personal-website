@@ -10,40 +10,31 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
         <header>
             <%- include('./../home/_navbar') %>
         </header>
-            <section class="blog-section">
-                <div class="card border-light mb-2 " >
-                    <div class="card-body">
-                      <h1 class="card-title text-center">Project</h1>
-                      <p class="card-text text-center">Add New Project</p>
-                    </div>
-                  </div>
-                <div class="blog-display">
-                    <div class="row">
-                        <div class="col">
-                          
-                        </div>
-                        <div class="col-8">
-                            <div class="blog-list-card">
-                                <form method="POST" action="/projects">
-                                    <%- include('_form_fields') %>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col">
-                          
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-center text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Add New Project</p>
+                            <form method="POST" action="/projects">
+                                <%- include('_form_fields') %>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>       
+            </section>
+        </div>
+                
+        <div class="container">
             <footer>
-                <div class="card-footer text-muted mt-3">
-                  <%- include('./../home/_footer') %>
-                </div>
-              </footer>
+                <%- include('./../home/_footer') %>
+            </footer>
+        </div>
    </div>
    
     <!-- Bootstrap JavaScript -->

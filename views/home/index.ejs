@@ -1,60 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="/public/img/favicon.ico"/>
-    <!-- Bootstrap CSS  -->
-    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/jpg" href="/public/img/favicon.ico" />
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/style.css" />
     <title>Abhik Ghosh | Projects, Profiles, Technical Blogs</title>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <%- include('_navbar') %>
-        </header>
-        <section class="jumbotron-section">
-            <%- include('_jumbotron') %>
-        </section>
-        <section class="intro-section">
-          <div class="card mt-3">
-            <div class="card-body mx-lg-5 px-lg-5">
-              <h5 class="card-title text-warning mx-lg-5 px-lg-5" >✋ Bio</h5>
-              <p class="card-text mx-lg-5 px-lg-5"><%- include('_intro.html') %></p>
+  </head>
+  <body>
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
+      <header><%- include('_navbar') %></header>
+      <section class="jumbotron-section"><%- include('_jumbotron') %></section>
+      <div class="container">
+        <section class="section-block border-bottom border-secondary mb-2">
+          <div class="d-flex justify-content-start text-primary">
+            <div class="mx-lg-5">
+              <div class="mx-lg-5 my-2 px-3 py-4">
+                <p class="border-solid heading">tl;dr</p>
+                <p>Data Solution Architect, currently focusing on data migration into hybrid/ public/ private
+                  cloud environment and analytics data platform modernization. Love clean code and functional style
+                  programming.
+                  Enjoy long run, photography & travelling.
+                </p>
+              </div>
             </div>
           </div>
         </section>
-        <section class="project-home-section">
-          <div class="card mt-3">
-            <div class="card-body mx-lg-5 px-lg-5">
-              <h5 class="card-title text-warning mx-lg-5 px-lg-5" >🖥 Featured Projects</h5>
-              <p class="card-text"><%- include('_projects.html') %></p>
+      </div>
+      <div class="container">
+        <section class="section-block border-bottom border-secondary mb-2">
+          <div class="d-flex justify-content-start text-primary">
+            <div class="mx-lg-5">
+              <div class="mx-lg-5 my-2 px-3 py-4">
+                <p class="border-solid heading">Bio</p>
+                <p>
+                  I am a Data Solution Architect
+                  with over 13 years of experience in software engineering.
+                  I have led design, development and management of IT Solution
+                  for many fortune five hundred companies, SMBs and startups during my service in this industry.<br><br>
+                  I am commited to help organizations achieve maximum benefits from their
+                  technology investments and push their IT operational boundaries.
+                  I have helped several customers discovering their wealth in data, monitizing and setting up analytical
+                  platforms,
+                  in cloud migration journey and simplifying legacy systems integration while keeping their data and
+                  infrastructure
+                  secured than ever before. Cost and resource optimization is and has always been a key focus area for
+                  me.<br><br>I have a deep passion towards clean code and efficient design techniques. I am a
+                  life-long learner
+                  and an avid reader.
+                  I love to contribute to the community by means of blogging, speaking at forums and meetups, on
+                  stackoverflow, dev.to etc. When I am
+                  not
+                  working,
+                  I enjoy travelling and photography. Because, at the end of the day, life is all about seeing, learning
+                  and being a
+                  better
+                  version of yourself. 🙂
+                </p>
+                <p class="border-solid heading">Experience Summary</p>
+                <p>For the last 13 plus years, I have been part of a software service-based company and during this tenure
+                  I have played multiple roles within the orgaization with varied level of responsibilities. Most
+                  recently,
+                  I'm part of the Solution Architect team, primarily focusing on Data Solution
+                  Architecting
+                  and Design. I look after accounts migrating their data solution to the cloud and modernizing their
+                  leagcy data platforms.
+                </p>
+                <p>
+                <div class="row px-2">
+                  <div class="col-md-12">
+                    <ul class="timeline">
+                      <li>
+                        <div class="text-success" style="font-size: 18px; font-weight: bold; display:inline;">Data
+                          Architect</div>
+                        <div class="float-right text-success" style="display:inline;">Feb 2018</div>
+                        <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc
+                          vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                      </li>
+                      <li>
+                        <div class="text-success" style="font-size: 18px; font-weight: bold; display:inline;">Data
+                          Engineer</div>
+                        <div class="float-right text-success" style="display:inline;">Mar 2011</div>
+                        <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc
+                          vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                      </li>
+                      <li>
+                        <div class="text-success" style="font-size: 18px; font-weight: bold; display:inline;">Java EE
+                          Developer</div>
+                        <div class="float-right text-success" style="display:inline;">Dec 2010</div>
+                        <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc
+                          vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                      </li>
+                      <li>
+                        <div class="text-success" style="font-size: 18px; font-weight: bold; display:inline;">Mainframe
+                          Developer</div>
+                        <div class="float-right text-success" style="display:inline;">Dec 2010</div>
+                        <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc
+                          vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                </p>
+                <p class="border-solid heading">Technology Stack</p>
+                <p>kfdkdsf
+                </p>
+                <p class="border-solid heading">Education</p>
+                <p>I have completed my electrical engineering in 2007 and started working for one of the most reputed
+                  software
+                  consultancy firm in India. After 10 years working in the industry, I went back to complete my Post
+                  Graduate Diploma in
+                  Data Science in 2018.
+                </p>
+              </div>
             </div>
           </div>
         </section>
-        <section class="blog-home-section">
-          <div class="card mt-3">
-            <div class="card-body mx-lg-5 px-lg-5">
-              <h5 class="card-title text-warning mx-lg-5 px-lg-5" >🖊 Bite-sized Articles</h5>
-              <p class="card-text"><%- include('_articles.html') %></p>
+      </div>
+      <div class="container">
+        <section class="section-block border-bottom border-secondary mb-2">
+          <div class="d-flex justify-content-start text-primary">
+            <div class="mx-lg-5">
+              <div class="mx-lg-5 my-2 px-3 py-4">
+                <p class="border-solid heading">Work for myself</p>
+                <p>
+                <ul>
+                  <li>Outside of office hours, I mostly spend time with its related to playing, experimenting
+                    with new technology technology trends in the industry. I love to go through open source
+                    codes.
+                  </li>
+                </ul>
+                </p>
+              </div>
             </div>
           </div>
         </section>
+      </div>
+      <div class="container">
         <footer>
-          <div class="card-footer text-muted mt-3">
             <%- include('_footer') %>
-          </div>
         </footer>
+      </div>
     </div>
-
-    
-    <!-- Bootstrap JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
     <!-- local JS -->
     <script src="/public/js/main.js"></script>
-</body>
+  </body>
 </html>

@@ -69,7 +69,8 @@ router.get('/edit/:id', async (req, res) => {
 })
 
 router.get('/:slug', async (req, res) => {
-    const project = await Project.findOne({slug: req.params.slug})
+    let project = await Project.findOne({slug: req.params.slug})
+    // project.createdAt = project.createdAt.toString().substring(4, 14)
     if(project == null ){
         res.redirect('/')
     }

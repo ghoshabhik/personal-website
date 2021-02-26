@@ -6,16 +6,16 @@
     
     
     <label for="description">Short Description</label>
-    <textarea  rows="3" style="height:100%;" required name="description" id="description" class="form-control mb-2"><%= project.description %></textarea>
+    <textarea  rows="5" style="height:100%;" required name="description" id="description" class="form-control mb-2"><%= project.description %></textarea>
     <label for="markdown">Markdown</label>
-    <textarea rows="6" style="height:100%;" name="markdown" id="markdown" class="form-control mb-2"><%= project.markdown %></textarea>
+    <textarea rows="10" style="height:100%;" name="markdown" id="markdown" class="form-control mb-2"><%= project.markdown %></textarea>
     <div class="custom-control custom-switch mb-2 mt-2">
         <input type="checkbox" class="custom-control-input" id="htmlOnly" name="htmlOnly" >
         <label class="custom-control-label" for="htmlOnly">Do not Convert Markdown to HTML</label>
         <input type="hidden" id="flag" name="flag" value="<%= project.htmlOnly %>">
     </div>
     <label for="showHtml">Raw HTML</label>
-    <textarea required name="showHtml" id="showHtml" class="form-control mb-2" rows="6" style="height:100%;"><%= project.showHtml %></textarea>
+    <textarea required name="showHtml" id="showHtml" class="form-control mb-2" rows="10" style="height:100%;"><%= project.showHtml %></textarea>
 </div>
 <a href="/projects" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-success">Save</button>

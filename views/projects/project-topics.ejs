@@ -11,48 +11,48 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-
-      <header>
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
+    <header>
         <%- include('./../home/_navbar') %>
-    </header>
-            <section class="blog-section">
-                <div class="blog-nav">
-                  <div class="card border-light mb-3 " >
-                    <div class="card-body">
-                      <h1 class="card-title text-center">Projects</h1>
-                      <blockquote class="blockquote">
-                        <p class="card-text mb-0 text-center">“Any fool can write code that a computer can understand. 
-                          Good programmers write code that humans can understand.” – Martin Fowler</p>
-                      </blockquote>  
-                    </div>
-                  </div>
-                    <div class="row">
-                        <div class="col">
-                          
-                        </div>
-                        <div class="col-10">
-                          <% if(mode == 'DEV'){ %>
-                            <div class="d-flex justify-content-center mb-3">
-                                <a href="/projects/new" class="btn btn-secondary">Create a new Project</a>
-                            </div>
-                          <% } %>
-                        </div>
-                        <div class="col">
-                          
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="blog-display mt-3">
-                  <%- include('_collapseble_accordian') %>
-                </div>
-            </section>       
-            <footer>
-              <div class="card-footer text-muted mt-3">
-                <%- include('./../home/_footer') %>
+    </header>     
+    <div class="container mt-2">
+      <section class="section-block border-bottom border-secondary mb-2">
+        <div class="d-flex justify-content-start text-primary">
+          <div class="mx-lg-5">
+            <div class="mx-lg-5 my-2 px-3 py-4">
+              <p class="border-solid heading">Projects</p>
+              <p>These are a collection of small projects or prototypes for my other projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="container mt-2">
+      <section class="section-block border-bottom border-secondary mb-2">
+        <div class="d-flex justify-content-start text-primary">
+          <div class="mx-lg-5">
+            <div class="mx-lg-5 my-2 px-3 py-3">
+              <div>
+                <%- include('_collapseble_accordian') %>
               </div>
-            </footer>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+      <% if(mode=='DEV' ){ %>
+        <div class="d-flex justify-content-center mb-3">
+          <a href="/projects/new" class="btn btn-secondary">Create a new Project</a>
+        </div>
+        <% } %>
+        
+      <div class="container">
+        <footer>
+          <%- include('./../home/_footer') %>
+        </footer>
+      </div>
    </div>
    
     <!-- Bootstrap JavaScript -->

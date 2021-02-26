@@ -11,64 +11,52 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-            <header>
-                <%- include('./../home/_navbar') %>
-            </header>
-            <section class="blog-section">
-                <div class="blog-nav">
-                    <div class="card border-light mb-3 " >
-                        <div class="card-body">
-                          <h1 class="card-title text-center"><%= project.title %></h1>
-                          <p class="card-text text-center"><%= project.description %></p>
-                        </div>
-                      </div>
-                    
-                </div>
-                <div class="blog-display">
-                    <div class="d-flex justify-content-center">
-                        <a href="/projects" class="btn btn-outline-secondary mb-3 mr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-                                <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-                              </svg>
-                              Back</a>
-                        <span class="text-center">Tag: <%= project.projectType %> </span>
-                        
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <!--div class="col">
-                          
-                        </div-->
-                        <div class="col-12 d-flex flex-column justify-content-center">
-                            <div class="card border-light mb-3 " >
-                                <div class="card-body mx-lg-5">
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
+        <header>
+            <%- include('./../home/_navbar') %>
+        </header>
+        <div class="container mt-2">
+            <section class="section-block mb-2 p-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/projects">All Projects</a></li>
+                    <li class="breadcrumb-item active"><%= project.slug %></li>
+                </ol>
+                <span class="ml-3 text-small text-muted">Tag: <%= project.projectType %></span>
+                <span class="ml-3 text-small text-muted">Last Modified: 
+                        <%= project.createdAt.toString().substring(4, 15) %>
+                </span>
+            </section>
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading"><%= project.title %></p>
+                            <p>
                                 <%- project.showHtml %>
-                                </div>
-                            </div>  
-                            
+                            </p>
                         </div>
-                        <!--div class="col">
-                          
-                        </div-->
                     </div>
-                    <div class="d-flex justify-content-center">
-                    <% if(mode == 'DEV') { %>
-                    <form action="/projects/<%= project.id%>?_method=DELETE" method="POST" class="d-inline">
+                </div>
+            </section>
+        </div>
+        <div class="d-flex justify-content-center">
+            <% if(mode=='DEV' ) { %>
+                <form action="/projects/<%= project.id%>?_method=DELETE" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                    <a href="/projects/edit/<%= project.id%>" class="btn btn-info ml-1">Edit</a>
-                    <% } %>
-                </div>
-                <p class="text-center text-muted my-2">If you have any question or comment, please send me an email 
-                    @ abhik.ghosh5@gmail.com. I'll respond within a day
-                </p>
-            </section>       
-            <footer>
-                <div class="card-footer text-muted mt-3">
-                  <%- include('./../home/_footer') %>
-                </div>
-              </footer>
+                </form>
+                <a href="/projects/edit/<%= project.id%>" class="btn btn-info ml-1">Edit</a>
+                <% } %>
+        </div>
+        <p class="text-center text-muted my-2">If you have any question or comment, please send me an email
+            @ abhik.ghosh5@gmail.com.
+        </p>
+                
+    <div class="container">
+        <footer>
+            <%- include('./../home/_footer') %>
+        </footer>
+    </div>
    </div>
    
     <!-- Bootstrap JavaScript -->
@@ -79,10 +67,5 @@
     <script src="/public/js/main.js"></script>
     <script src="/public/js/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
-    <script>
-        function resizeIframe(obj) {
-          obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        }
-      </script>
 </body>
 </html>
