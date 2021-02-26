@@ -11,69 +11,96 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-            <header>
-                <%- include('./../home/_navbar') %>
-            </header>
-            <section class="search-section">
-                <div class="d-flex justify-content-center mt-5">
-                    <p>'<%= articles.length %>' Articles and '<%= projects.length %>' Projects 
-                     found matching the search query: <strong class="text-info">'<%= q %>'</strong>
-                    </p>
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
+        <header>
+            <%- include('./../home/_navbar') %>
+        </header>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Search Results</p>
+                            <p>'<%= articles.length %>' Articles and '<%= projects.length %>' Projects
+                                        found matching the search query: <strong>'<%= q %>'</strong>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <% if(!resultFlag.articles) { %>
-                    <div class="d-flex justify-content-center mt-5">
-                        <p>Articles Search failed with an error</p>
-                    </div>
-                <% } %>
-                <% if(resultFlag.articles) { %>
-                <% articles.forEach(article => { %>
-                    <div class="card mt-3">
-                        <div class="card-body mx-lg-5">
-                            <div class="row">
-                                <div class="col-lg-9"><h4 class="card-title mb-2"><%=  article.title %></h4></div>
-                                <div class="col-lg-3">
-                                    <a href="/articles/<%=  article.slug %>" class="btn btn-secondary btn-sm">Read This Article</a>
-                                </div>
-                            </div>
-                          <p class="card-text text-secondary  mb-2"><%=  article.description %></p>
-                          <!--a href="/articles/<%=  article.slug %>" class="btn btn-secondary btn-sm">Read This Article</a-->
+            </section>
+        </div>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Articles</p>
+                            <p>
+                                <% if(!resultFlag.articles) { %>
+                                    <div class="d-flex justify-content-center mt-5">
+                                        <p>Articles Search failed with an error</p>
+                                    </div>
+                                <% } %>
+                                <% if(resultFlag.articles) { %>
+                                    <% articles.forEach(article=> { %>
+                                        <a href="/articles/<%=  article.slug %>" class="text-decoration-none">
+                                            <div>
+                                                <p class="text-link-hover">
+                                                    <%= article.title %>
+                                                </p>
+                                                <p class="text-small">
+                                                    <%= article.description %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <hr>
+                                    <% }) %>
+                                <% } %>
+                            </p>
                         </div>
                     </div>
-                <% }) %>
-                <% } %>
-                <hr>    
-                <% if(!resultFlag.projects) { %>
-                    <div class="d-flex justify-content-center mt-5">
-                        <p>Projects Search failed with an error</p>
-                    </div>
-                <% } %>
-                
-                <% if(resultFlag.projects) {  %>
-                <% projects.forEach(project => { %>
-                    <div class="card mt-3">
-                        <div class="card-body mx-lg-5">
-                            <div class="row">
-                                <div class="col-lg-9"><h4 class="card-title mb-2"><%=  project.title %></h4></div>
-                                <div class="col-lg-3">
-                                    <a href="/projects/<%=  project.slug %>" class="btn btn-secondary btn-sm">Go to this Project</a>
-                                </div>
-                            </div>
-                          <p class="card-text text-secondary  mb-2"><%=  project.description %></p>
-                          <!--a href="/project/<%=  project.slug %>" class="btn btn-secondary btn-sm">Go to this Project</a-->
+                </div>
+            </section>
+        </div>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Projects</p>
+                            <p>
+                                <% if(!resultFlag.projects) { %>
+                                    <div class="d-flex justify-content-center mt-5">
+                                        <p>Projects Search failed with an error</p>
+                                    </div>
+                                <% } %>
+                                <% if(resultFlag.projects) { %>
+                                    <% projects.forEach(project=>{ %>
+                                        <a href="/projects/<%=  project.slug %>" class="text-decoration-none">
+                                            <div>
+                                                <p class="text-link-hover">
+                                                    <%= project.title %>
+                                                </p>
+                                                <p class="text-small">
+                                                    <%= project.description %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <hr>
+                                    <% }) %>
+                                <% } %>
+                            </p>
                         </div>
                     </div>
-                <% }) %>
-                <% } %>
-                <!--/div-->
-                
-            </section> 
+                </div>
+            </section>
+        </div>
+        <div class="container">
             <footer>
-                <div class="card-footer text-muted mt-3 ">
-                  <%- include('./../home/_footer') %>
-                </div>
-            </footer>      
-            
+                <%- include('./../home/_footer') %>
+            </footer>
+        </div>   
    </div>
    
     <!-- Bootstrap JavaScript -->

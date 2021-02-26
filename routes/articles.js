@@ -44,11 +44,11 @@ router.get('/new', (req, res) => {
 
 router.get('/pagenated', async (req, res) => {
     let page = req.query.page || 1
-    let limit = 3
+    let limit = 5
     let pagenatedStruct = []
     let docCount = await Article.countDocuments()
-    let countOfPageButton = Math.round(docCount/limit)
-    console.log(docCount)
+    let countOfPageButton = Math.ceil(docCount/limit)
+    //console.log(docCount, "--" ,countOfPageButton)
 
     pagenatedStruct.push({
         class: 'inactive',

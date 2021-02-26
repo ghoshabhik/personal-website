@@ -11,60 +11,52 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
         <header>
             <%- include('./../home/_navbar') %>
         </header>
-            <section class="blog-section">
-                <div class="blog-nav">
-                    <div class="row">
-                        <div class="col">
-
-                        </div>
-                        <div class="col-8 d-flex justify-content-center mt-4">
-                            <div class="card">
-                                <div class="card-body">
-                                  <p class="card-text">
-                                   You have any question, comment or feedback for me? </p> <p>Please write to me @ 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-                                      </svg>  
-                                    abhik.ghosh5@gmail.com. I respond as soon as possible. You can also 
-                                    use the below form to submit your comment/ feedback. </p><p>Once again, Thank you! for being here. 
-                                </p>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="col">
-                            
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="blog-display mt-4">
-                    <div class="row">
-                        <div class="col">
-                          
-                        </div>
-                        <div class="col-8">
-                            <div class="blog-list-card">
-                                <form method="POST" action="/contact">
-                                    <%- include('_form_fields') %>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col">
-                          
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-center text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p>
+                                Do you have any question, comment or feedback for me? </p>
+                            <p>Please write to me @
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                                </svg>
+                                abhik.ghosh5@gmail.com. I respond as soon as possible. You can also
+                                use the below form to submit your comment/ feedback.
+                            </p>
+                            <p>Once again, Thank you! for being here.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>       
+            </section>
+        </div>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-center text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p><form method="POST" action="/contact">
+                                <%- include('_form_fields') %>
+                            </form></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>     
+        <div class="container">
             <footer>
-                <div class="card-footer text-muted mt-3">
-                  <%- include('./../home/_footer') %>
-                </div>
-              </footer>
+                <%- include('./../home/_footer') %>
+            </footer>
+        </div>
    </div>
    
     <!-- Bootstrap JavaScript -->

@@ -11,56 +11,59 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
         <header>
             <%- include('./../home/_navbar') %>
         </header>
-            <section class="blog-section">
-                <div class="blog-nav">
-                    <div class="card border-light mb-3 " >
-                        <div class="card-body">
-                          <h1 class="card-title text-center">Comments</h1>
-                          <p class="card-text text-center">Here are all the comments</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="blog-display">
-                    <% if(mode == 'DEV'){ %>
-                        <div class="d-flex justify-content-center mb-2">
-                            <a href="/contact/new" class="btn btn-primary">Create a new comment</a>
-                        </div>
-                    <% } %>
-                    
-                    <div class="row">
-                        <div class="col">
-                          
-                        </div>
-                        <div class="col-8">
-                            <div class="blog-list-card">
-                            <% comments.forEach(comment => { %>
-                                <div class="card mb-2">
-                                    <div class="card-body">
-                                      <h5 class="card-title m-2"><%=  comment.name %></h5>
-                                      <div class="text-muted m-2"><%=  comment.createdAt%></div>
-                                      <p class="card-text m-2"><%=  comment.comment %></p>
-                                    </div>
-                                </div>
-                            <% }) %>
-                            </div>
-                            
-                        </div>
-                        <div class="col">
-                          
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-center text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Conatct Leads</p>
                         </div>
                     </div>
                 </div>
-            </section>       
-            <footer>
-                <div class="card-footer text-muted mt-3">
-                  <%- include('./../home/_footer') %>
+            </section>
+        </div>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-center text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p>
+                                <% comments.forEach(comment=> { %>
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title m-2">
+                                                <%= comment.name %>
+                                            </h5>
+                                            <div class="text-muted m-2">
+                                                <%= comment.createdAt%>
+                                            </div>
+                                            <p class="card-text m-2">
+                                                <%= comment.comment %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </footer>
+            </section>
+        </div>
+        <% if(mode=='DEV' ){ %>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="/contact/new" class="btn btn-primary">Create a new contact</a>
+            </div>
+        <% } %>
+        <div class="container">
+            <footer>
+                <%- include('./../home/_footer') %>
+            </footer>
+        </div>
    </div>
    
     <!-- Bootstrap JavaScript -->

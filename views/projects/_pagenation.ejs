@@ -1,6 +1,6 @@
 <% if(pagenatedStruct.length >0) { %>
 <div>
-    <ul class="pagination pagination-sm mt-2">
+    <ul class="pagination pagination mt-2">
         <% pagenatedStruct.forEach(page => { %>
             <li class="page-item <%= page.class %>">
                 <a class="page-link" href="<%= page.href %>"><%= page.name %></a>

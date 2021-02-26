@@ -11,67 +11,74 @@
     <title>Abhik Ghosh | Projects, Profiles, Technical Articles</title>
 </head>
 <body>
-    <div class="container">
-            <header>
-                <%- include('./../home/_navbar') %>
-            </header>
-            <section class="blog-section">
-                <div class="card border-light mb-3 " >
-                    <div class="card-body">
-                      <h1 class="card-title text-center">Articles</h1>
-                      <blockquote class="blockquote">
-                        <p class="card-text mb-0 text-center">“Conversation is king. Content is just something to talk about”</p>
-                      </blockquote>
-
-                    </div>
-                  </div>
-                <div class="blog-display">
-                    <% if(mode == 'DEV'){ %>
-                        <div class="d-flex justify-content-center">
-                            <a href="/articles/new" class="btn btn-primary">Create a new article</a>
+    <div class="position-fixed main-background mh-100 h-100 mw-100 w-100"></div>
+    <div class="main position-relative">
+        <header>
+            <%- include('./../home/_navbar') %>
+        </header>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p class="border-solid heading">Posts</p>
+                            <p>These are my posts from medium, Dev.to and other social media sites. I've placed them all here at one place
+                            </p>
                         </div>
-                    <% } %>
-                    
-                    <div class="row">
-                        <!--div class="col">
-                          
-                        </div-->
-                        <div class="col-12">
-                            <div class="blog-list-card">
-                            <% articles.forEach(article => { %>
-                                <div class="card mt-3">
-                                    
-                                    <div class="card-body mx-lg-5">
-                                        <div class="row">
-                                            <div class="col-lg-9"><h4 class="card-title mb-2"><%=  article.title %></h4></div>
-                                            <div class="col-lg-3"><div class="text-muted mb-2"><%=  article.createdAt.toLocaleDateString() %></div></div>
-                                          </div>
-                                      
-                                      
-                                      <p class="card-text text-secondary  mb-2"><%=  article.description %></p>
-                                      <a href="/articles/<%=  article.slug %>" class="btn btn-secondary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="container mt-2">
+            <section class="section-block border-bottom border-secondary mb-2">
+                <div class="d-flex justify-content-start text-primary">
+                    <div class="mx-lg-5 w-100">
+                        <div class="mx-lg-5 my-2 px-3 py-4">
+                            <p>
+                                <% articles.forEach(article=> { %>
+                                <div class="row">
+                                    <div class="col-2 text-small">
+                                        <%= article.createdAt.toString().substring(4,15) %>
+                                    </div>
+                                    <div class="col-10">
+                                        <a href="/articles/<%=  article.slug %>" class="text-decoration-none">
+                                            <div>
+                                                <p class="text-link-hover font-weight-bold">
+                                                    <%= article.title %>
+                                                </p>
+                                                <p class="font-weight-light">
+                                                    <%= article.description %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <hr>
                                     </div>
                                 </div>
-                            <% }) %>
-                            </div>
-                            
+                                <% }) %>
+                                <p>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8 d-flex justify-content-center">
+                                        <%- include('./../projects/_pagenation') %>
+                                    </div>
+                                </div>
+                                </p>
                         </div>
-                        <!--div class="col">
-                          
-                        </div-->
                     </div>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8 d-flex justify-content-center">
-                            <%- include('./../projects/_pagenation') %>
-                        </div>
-                      </div>
                 </div>
-            </section>       
+            </section>
+        </div>
+            
+        <% if(mode=='DEV' ){ %>
+            <div class="d-flex justify-content-center">
+                <a href="/articles/new" class="btn btn-secondary">Create a new article</a>
+            </div>
+        <% } %>
+        <div class="container">
             <footer>
-                <div class="card-footer text-muted mt-3">
-                  <%- include('./../home/_footer') %>
-                </div>
-              </footer>
+                <%- include('./../home/_footer') %>
+            </footer>
+        </div>
+    </div>
     <!-- Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
