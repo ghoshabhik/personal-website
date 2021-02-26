@@ -38,7 +38,7 @@
                                 <% articles.forEach(article=> { %>
                                 <div class="row">
                                     <div class="col-2 text-small">
-                                        <%= article.createdAt.toString().substring(4,15) %>
+                                        <%= article.createdAt.toString().substring(0, 10)  %>
                                     </div>
                                     <div class="col-10">
                                         <a href="/articles/<%=  article.slug %>" class="text-decoration-none">

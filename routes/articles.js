@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const redis = require('redis')
 
 require('dotenv').config()
 const Article = require('./../models/article')
@@ -8,10 +9,26 @@ const Article = require('./../models/article')
 const mongodb_username = process.env.MONGODB_USER
 const mongodb_password = process.env.MONGODB_PASSWORD
 const mongodb_database = process.env.MONGODB_DATABASE
+const redis_password = process.env.REDIS_PASSWORD
+const redis_server = process.env.REDIS_SERVER
+const redis_port = process.env.REDIS_PORT
 
 const uri = `mongodb+srv://${mongodb_username}:${mongodb_password}@abhikatlasmumbaiin.16jmi.mongodb.net/${mongodb_database}?retryWrites=true&w=majority`;
 
 mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true})
+
+redisClient =  redis.createClient({
+    port      : parseInt(redis_port) , //6379          
+    host      : redis_server,        
+    password  : `${redis_password}`
+    })
+
+redisClient.on('connect', function () {
+    console.log('redis connected');
+    console.log(`connected ${redisClient.connected}`);
+}).on('error', function (error) {
+    console.log(error);
+});
 
 
 router.put('/:slug/postcomment', async (req, res) => {
@@ -41,41 +58,88 @@ router.get('/new', (req, res) => {
     
     res.render('articles/new-article', {article: new Article()})
 })
-
-router.get('/pagenated', async (req, res) => {
+cache = (req, res, next) => {
+    const use_redis = process.env.USE_REDIS
+    if(use_redis == 'YES'){
+        let page = req.query.page
+    let limit = 5
+    let pagenatedStruct = []
+    redisClient.get(`pagenated-${page}-${limit}`, (err, pagenated) => {
+        if (err) throw err;
+        //console.log(pagenated);
+        redisClient.get(`pagenated-pagenatedStruct-${page}-${limit}`, (err, pageStruct) => {
+            if (err) throw err;
+            //console.log(pageStruct);
+            res.pagenated = pagenated;
+            res.pageStruct = pageStruct;
+            //console.log(res.pagenated )
+            console.log('Hit Redis to find data...')
+            next();
+        });
+    });
+    }
+    else{
+        next()
+    }
+    
+}
+router.get('/pagenated', cache, async (req, res) => {
     let page = req.query.page || 1
     let limit = 5
     let pagenatedStruct = []
-    let docCount = await Article.countDocuments()
-    let countOfPageButton = Math.ceil(docCount/limit)
-    //console.log(docCount, "--" ,countOfPageButton)
 
-    pagenatedStruct.push({
-        class: 'inactive',
-        href: '/articles/pagenated?page=1',
-        name: '<<'
-    })
-    Array(countOfPageButton).fill().map((_, i) => i ).forEach( i => {
-        pagenatedStruct.push({
-            href: `/articles/pagenated?page=${(i+1)}`,
-            class: 'inactive',
-            name: `${(i+1)}`
+    if(res.pagenated && res.pageStruct){
+        res.render('articles/articles', {
+            articles: JSON.parse(res.pagenated), 
+            mode: process.env.RUNNING_MODE, 
+            pagenatedStruct: JSON.parse(res.pageStruct)
         })
-    })
-    pagenatedStruct.push({
-        class: 'inactive',
-        href: `/articles/pagenated?page=${countOfPageButton}`,
-        name: '>>'
-    })
+    } else{
+        let docCount = await Article.countDocuments()
+        let countOfPageButton = Math.ceil(docCount/limit)
+        //console.log(docCount, "--" ,countOfPageButton)
 
-    pagenatedStruct.map( currentPage => {
-        if(page == currentPage.name) 
-        currentPage.class = 'active'
-    })
-    //console.log(pagenatedStruct)
+        pagenatedStruct.push({
+            class: 'inactive',
+            href: '/articles/pagenated?page=1',
+            name: '<<'
+        })
+        Array(countOfPageButton).fill().map((_, i) => i ).forEach( i => {
+            pagenatedStruct.push({
+                href: `/articles/pagenated?page=${(i+1)}`,
+                class: 'inactive',
+                name: `${(i+1)}`
+            })
+        })
+        pagenatedStruct.push({
+            class: 'inactive',
+            href: `/articles/pagenated?page=${countOfPageButton}`,
+            name: '>>'
+        })
 
-    const articles = await Article.find().sort({createdAt: 'desc'}).limit(limit).skip((page-1)*limit)
-    res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: pagenatedStruct})
+        pagenatedStruct.map( currentPage => {
+            if(page == currentPage.name) 
+            currentPage.class = 'active'
+        })
+        //console.log(pagenatedStruct)
+
+        const articles = await Article.find().sort({createdAt: 'desc'}).limit(limit).skip((page-1)*limit)
+        article = articles.map( article => {
+            article.createdAt = article.createdAt.toString().substring(4,15)
+        })
+        redisClient.set(`pagenated-${page}-${limit}`,  JSON.stringify(articles), (err, reply) => {
+        if (err) throw err;
+        console.log(reply);
+        })
+        redisClient.set(`pagenated-pagenatedStruct-${page}-${limit}`,  JSON.stringify(pagenatedStruct), (err, reply) => {
+        if (err) throw err;
+        console.log(reply);
+        })
+        redisClient.expire(`pagenated-${page}-${limit}`,3600)
+        redisClient.expire(`pagenated-pagenatedStruct-${page}-${limit}`,3600)
+        console.log("hit db to find pagenated list...")
+        res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: pagenatedStruct})
+    }
 })
 
 router.get('/edit/:id', async (req, res) => {

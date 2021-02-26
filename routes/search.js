@@ -20,44 +20,68 @@ router.post('/', async (req, res) => {
         projects: null
     }
     try{
-        articles = await Article.find( 
-            {'$or':[
-                {'showHtml':{'$regex':new RegExp(q), '$options':'i'}},
-                {'title':{'$regex':new RegExp(q), '$options':'i'}}]
-            }, 
-            {
-            _id: 0,
-            __v:0         
-            }, (err, data) => {
-                if(err){
-                    console.log(err)
-                } else { 
-                    //if(data.length >0)
-                    resultFlag.articles = 'found'  
-                    //console.log('Articles Flag: ',resultFlag.articles)
+        // articles = await Article.find( 
+        //     {'$or':[
+        //         {'showHtml':{'$regex':new RegExp(q), '$options':'i'}},
+        //         {'title':{'$regex':new RegExp(q), '$options':'i'}}]
+        //     }, 
+        //     {
+        //     _id: 0,
+        //     __v:0         
+        //     }, (err, data) => {
+        //         if(err){
+        //             console.log(err)
+        //         } else { 
+        //             //if(data.length >0)
+        //             resultFlag.articles = 'found'  
+        //             //console.log('Articles Flag: ',resultFlag.articles)
+        //         }
+        //     }
+        // )
+        articles = await Article.find({
+                    $text: {
+                        $search: q
+                    }
+                },
+                {
+                    score: { $meta: "textScore" }
                 }
-            }
-        )
-
-        projects = await Project.find( 
-            {'$or':[
-                {'showHtml':{'$regex':new RegExp(q), '$options':'i'}},
-                {'title':{'$regex':new RegExp(q), '$options':'i'}}]
-            }, 
-            {
-            _id: 0,
-            __v:0         
-            }, (err, data) => {
-                if(err){
-                    console.log(err)
-                } else {
-                    //if(data.length >0)  
-                    resultFlag.projects = 'found'
-                    //console.log('Projects Flag: ',resultFlag.projects)
-                }
-            }
-        )
-
+                ).sort({
+                    score: { $meta: "textScore" }
+                })
+        resultFlag.articles = 'found'
+        //console.log(articles)        
+        // projects = await Project.find( 
+        //     {'$or':[
+        //         {'showHtml':{'$regex':new RegExp(q), '$options':'i'}},
+        //         {'title':{'$regex':new RegExp(q), '$options':'i'}}]
+        //     }, 
+        //     {
+        //     _id: 0,
+        //     __v:0         
+        //     }, (err, data) => {
+        //         if(err){
+        //             console.log(err)
+        //         } else {
+        //             //if(data.length >0)  
+        //             resultFlag.projects = 'found'
+        //             //console.log('Projects Flag: ',resultFlag.projects)
+        //         }
+        //     }
+        // )
+        projects = await Project.find(
+                    {
+                        $text: {
+                            $search: "test"
+                    }
+                    },
+                    {
+                        score: { $meta: "textScore" }
+                    }
+                    ).sort({
+                        score: { $meta: "textScore" }
+                    })
+        resultFlag.projects = 'found'
         res.render('search/search_results',{articles: articles, 
             q:q, 
             projects: projects, 

@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    $("#weekDay").text(`Happy ${days[new Date().getDay()]}!`)
+})
+
+$(document).ready(function(){
     $(".target-class").html("Showing All Projects");
     //console.log($("#flag").val())
     if($("#flag").val()=='on'){

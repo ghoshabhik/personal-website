@@ -14,7 +14,7 @@
           <div class="list-group">
             <% projects.forEach(project => { %>
               <% if(project.projectType.toLowerCase().indexOf('data') !== -1) { %> 
-                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                  - <span class="text-secondary"><%= project.description %></span>
                 </a>
                 <% } %>
@@ -36,7 +36,7 @@
           <div class="list-group">
             <% projects.forEach(project => { %>
               <% if(project.projectType.toLowerCase().indexOf('cloud') !== -1) { %> 
-                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                  - <span class="text-secondary"><%= project.description %></span>
                 </a>
                 <% } %>
@@ -58,7 +58,7 @@
           <div class="list-group">
             <% projects.forEach(project => { %>
               <% if(project.projectType.toLowerCase().indexOf('system') !== -1) { %> 
-                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                  - <span class="text-secondary"><%= project.description %></span>
                 </a>
                 <% } %>
@@ -80,7 +80,7 @@
             <div class="list-group">
               <% projects.forEach(project => { %>
                 <% if(project.projectType.toLowerCase().indexOf('devops') !== -1) { %> 
-                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                    - <span class="text-secondary"><%= project.description %></span>
                   </a>
                   <% } %>
@@ -103,7 +103,7 @@
             <div class="list-group">
               <% projects.forEach(project => { %>
                 <% if(project.projectType.toLowerCase().indexOf('microservice') !== -1) { %> 
-                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                    - <span class="text-secondary"><%= project.description %></span>
                   </a>
                   <% } %>
@@ -125,7 +125,7 @@
             <div class="list-group">
               <% projects.forEach(project => { %>
                 <% if(project.projectType.toLowerCase().indexOf('integration') !== -1) { %> 
-                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-info"><%= project.title %></span>
+                  <a  class="list-group-item list-group-item-action " href="/projects/<%= project.slug %>"><span class="text-primary"><%= project.title %></span>
                    - <span class="text-secondary"><%= project.description %></span>
                   </a>
                   <% } %>
