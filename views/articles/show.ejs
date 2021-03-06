@@ -29,7 +29,7 @@
             <%= article.createdAt.toString().substring(4, 15) %>
           </span>
         </section>
-        <section class="section-block border-bottom border-secondary mb-2">
+        <section class="section-block  mb-2">
           <div class="d-flex justify-content-start text-primary">
             <div class="mx-lg-5 w-100">
               <div class="mx-lg-5 my-2 px-3 py-4">
@@ -40,6 +40,9 @@
                   </p>
                   <p>
                     <%- article.showHtml %>
+                  </p>
+                  <p>
+                    <%- include('_post_tags') %>
                   </p>
                   </div>
                 </div>
@@ -58,7 +61,7 @@
       </div>
       <% if(mode=='DEV' ) { %>
       <div class="container mt-2">
-        <section class="section-block border-bottom border-secondary mb-2">
+        <section class="section-block mb-2">
           <div class="d-flex justify-content-center text-primary">
             <div class="mx-lg-5">
               <div class="mx-lg-5 my-2 px-3 py-4">
@@ -73,7 +76,7 @@
       </div>
       <% } %>
       <div class="container mt-2">
-        <section class="section-block border-bottom border-secondary mb-2">
+        <section class="section-block mb-2">
           <div class="d-flex justify-content-center text-primary">
             <div class="mx-lg-5">
               <div class="mx-lg-5 my-2 px-3 py-4">
@@ -88,11 +91,9 @@
         </section>
       </div>
            
-      <div class="container">
         <footer>
           <%- include('./../home/_footer') %>
         </footer>
-      </div>
    </div>
    
     <!-- Bootstrap JavaScript -->

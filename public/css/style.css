@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
 body {
+  font-family: 'Lato', 'Roboto', sans-serif;
   font-size: 18px;
   padding-top: 0;
   margin-top: 0;
   top: 0;
+  color: black;
 }
 /* Styling for flow scrolling */
 .main {
@@ -11,37 +14,53 @@ body {
   top: 0;
 }
 .main-background {
-  background-image: linear-gradient(to top left, #f0e5d8, #75cfb8);
+  /* background-image: linear-gradient(to top left, #f0e5d8, #75cfb8); */
+  /* background-color: #212121; */
+  /* background-color: rgb(56,56,56, 0.9); */
+  /* background-image: linear-gradient(to top left, #f4f4f2, #bbbfca); */
+  background-color: #ffffff;
   top: 0;
 }
 
 /* Styling Nav bar */
 nav {
   margin-top: 8px;
-  background-color: rgba(255, 255, 255, 0.9);
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-color: rgb(20, 20, 20, 0.9);
   padding-top: 1px !important;
   padding-bottom: 1px !important;
-  border-radius: 10px !important;
+  /* border-radius: 10px !important; */
 }
 /* Styling Footer */
 footer {
   margin-top: 8px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgb(20, 20, 20, 0.9);
   padding-top: 1px !important;
   padding-bottom: 1px !important;
-  border-radius: 10px !important;
+  height: 40px;
+  top: 100vh-40px;
 }
 /* Styling Jumbotron */
 .jumbotron {
   background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(50px);
-  border-radius: 12px;
+  /* background-color: rgb(56,56,56, 0.5); */
+  backdrop-filter: blur(150px);
+  /* border-radius: 12px; */
+  /* height: 700px; */
+
+}
+
+img.rounded-circle{
+  box-shadow:2px 2px rgb(33,33,33);
+  border: 3px solid red;;
 }
 .section-block {
   /* height:600px; */
-  background-color: rgba(255, 255, 255, 1);
+  /* background-color: rgba(255, 255, 255, 1); */
+  /* background-color: rgb(56,56,56, 0.5); */
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(50px);
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .site-footer {
@@ -92,13 +111,14 @@ ul.timeline > li:before {
   z-index: 400;
 }
 
-p {
+p, li {
   text-align: justify;
   color: black;
+  /* color: black; */
 }
 .text-small {
   font-size: smaller !important;
-  color: black;
+  /* color: black; */
 }
 
 blockquote {
@@ -107,6 +127,7 @@ blockquote {
   padding-left: 20px;
   padding-right: 20px;
   font-size: large;
+  color: #999;
 }
 .breadcrumb {
   background-color: rgba(255, 255, 255, 1) !important;
@@ -123,4 +144,23 @@ hr {
   margin-bottom: 1rem;
   border: 0;
   border-top: 2px solid #75cfb8;
+}
+
+.divider{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 50px;
+  height: 10px
+}
+
+ul>li.active>a{
+  color:#75cfb8 !important;
+}
+
+ul>li>a{
+  font-size: 15px;
+}
+div.list>p{
+  margin-top: 0;
+  margin-bottom: 0;
 }

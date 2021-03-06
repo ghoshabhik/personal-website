@@ -1,0 +1,6 @@
+<div class="row px-lg-3">
+  Tags: &nbsp;
+<% article.tags.map(tag => { %>
+      <a class="btn btn-sm btn-outline-success" href="/articles/tags/<%=  tag %>"><%=  tag %> </a>&nbsp;
+<% }) %>
+</div>

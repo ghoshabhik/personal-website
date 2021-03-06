@@ -21,10 +21,7 @@
                 <div class="d-flex justify-content-start text-primary">
                     <div class="mx-lg-5">
                         <div class="mx-lg-5 my-2 px-3 py-4">
-                            <p class="border-solid heading">BLOG</p>
-                            <p>These are my posts from medium, Dev.to and other social media sites. I've placed them all here at one place.
-                                Here is an index of <a href="/articles/tags/all">all tags</a> to filter posts
-                            </p>
+                            <p class="border-solid heading"><%= currentTag %></p>
                         </div>
                     </div>
                 </div>
@@ -60,11 +57,6 @@
 
                                 <% }) %>
                                 <p>
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-8 d-flex justify-content-center">
-                                        <%- include('./../projects/_pagenation') %>
-                                    </div>
-                                </div>
                                 </p>
                         </div>
                     </div>
@@ -72,11 +64,6 @@
             </section>
         </div>
             
-        <% if(mode=='DEV' ){ %>
-            <div class="d-flex justify-content-center">
-                <a href="/articles/new" class="btn btn-secondary">Create a new article</a>
-            </div>
-        <% } %>
             <footer >
                 <%- include('./../home/_footer') %>
             </footer>

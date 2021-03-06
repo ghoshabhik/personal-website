@@ -138,6 +138,7 @@ router.get('/pagenated', cache, async (req, res) => {
         redisClient.expire(`pagenated-${page}-${limit}`,3600)
         redisClient.expire(`pagenated-pagenatedStruct-${page}-${limit}`,3600)
         console.log("hit db to find pagenated list...")
+        console.log(articles.tags)
         res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: pagenatedStruct})
     }
 })
@@ -148,6 +149,7 @@ router.get('/edit/:id', async (req, res) => {
     }
     var article = await Article.findById(req.params.id)
     //console.log('onlyHtml from DB: ',article.htmlOnly)
+    //article.tags = article.tags.join()
     if(article.htmlOnly == "off"){
         article.htmlOnly == null
     }
@@ -155,7 +157,8 @@ router.get('/edit/:id', async (req, res) => {
 })
 
 router.get('/:slug', async (req, res) => {
-    const article = await Article.findOne({slug: req.params.slug})
+    let article = await Article.findOne({slug: req.params.slug})
+    //article.tags = article.tags.join()
     if(article == null ){
         res.redirect('/')
     }
@@ -167,6 +170,7 @@ router.post('/', async (req, res) => {
     let article = new Article({
         title: req.body.title,
         description: req.body.description,
+        tags: req.body.tags.split(','),
         markdown: req.body.markdown,
         prev: req.body.back,
         next: req.body.next,
@@ -192,6 +196,7 @@ router.put('/:id', async (req, res) => {
     console.log("This is edit: ",article)
     article.title = req.body.title
     article.description = req.body.description
+    article.tags = req.body.tags.split(',')
     article.markdown = req.body.markdown
     article.prev = req.body.back,
     article.next = req.body.next,
@@ -215,13 +220,48 @@ router.put('/:id', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-    const articles = await Article.find().sort({createdAt: 'desc'})
+    let articles = await Article.find().sort({createdAt: 'desc'})
+    //article.tags = article.tags.join()
     res.render('articles/articles', {articles: articles, mode: process.env.RUNNING_MODE, pagenatedStruct: []})
 })
 
 router.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/articles')
+})
+
+router.get('/tags/:tag', async (req, res) => {
+    const tag = req.params.tag
+    if(tag == 'all'){
+        const tags = await Article.aggregate([
+            {
+                $unwind: "$tags"
+            },
+            {
+                $group: {
+                    "_id": "$tags",
+                    "hits": {
+                        $sum: 1
+                    }
+                }
+            },
+            {
+                $project: {
+                    "_id": 0,
+                    "name": "$_id",
+                    "hits": 1
+                }
+            }
+        ]).sort({"name": 1})
+        //console.log(tags)
+        let alphaArr = Array.from(new Set(tags.map(alpha => alpha.name.substring(0,1).toUpperCase())))
+        //console.log(alphaArr)
+        res.render('tags/show_tags', {tags:tags, alphaArr:alphaArr})
+    } else{
+        const articles = await Article.find({ tags: `${tag}`})
+        res.render('articles/articles_tags', {articles:articles, currentTag:tag})
+    }
+    
 })
 
 module.exports = router
